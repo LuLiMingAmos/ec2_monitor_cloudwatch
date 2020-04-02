@@ -4,7 +4,7 @@ then
 	wget https://s3.amazonaws.com/amazoncloudwatch-agent/linux/amd64/latest/AmazonCloudWatchAgent.zip -O AmazonCloudWatchAgent.zip
         cd /opt/src/ec2_monitor;unzip AmazonCloudWatchAgent.zip
 	cd /opt/src/ec2_monitor;bash -x ./install.sh
-	/bin/cp amazon-cloudwatch-agent-schema.json /opt/aws/amazon-cloudwatch-agent/doc/amazon-cloudwatch-agent-schema.json 
+	/bin/cp /opt/src/ec2_monitor_cloudwatch/amazon-cloudwatch-agent-schema.json /opt/aws/amazon-cloudwatch-agent/doc/amazon-cloudwatch-agent-schema.json 
 	/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:/opt/aws/amazon-cloudwatch-agent/doc/amazon-cloudwatch-agent-schema.json -s;/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -a status || systemctl status amazon-cloudwatch-agent
 	
 else
@@ -12,6 +12,6 @@ else
 	wget https://s3.amazonaws.com/amazoncloudwatch-agent/linux/amd64/latest/AmazonCloudWatchAgent.zip -O AmazonCloudWatchAgent.zip
         cd /opt/src/ec2_monitor;unzip AmazonCloudWatchAgent.zip
  	cd /opt/src/ec2_monitor;bash -x ./install.sh
-	/bin/cp amazon-cloudwatch-agent-schema.json /opt/aws/amazon-cloudwatch-agent/doc/amazon-cloudwatch-agent-schema.json 
+	/bin/cp /opt/src/ec2_monitor_cloudwatch/amazon-cloudwatch-agent-schema.json /opt/aws/amazon-cloudwatch-agent/doc/amazon-cloudwatch-agent-schema.json 
         /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:/opt/aws/amazon-cloudwatch-agent/doc/amazon-cloudwatch-agent-schema.json -s;/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -a status || systemctl status amazon-cloudwatch-agent
 fi
