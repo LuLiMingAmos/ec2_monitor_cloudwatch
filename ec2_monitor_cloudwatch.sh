@@ -4,7 +4,7 @@ then
 	wget https://s3.amazonaws.com/amazoncloudwatch-agent/linux/amd64/latest/AmazonCloudWatchAgent.zip -O AmazonCloudWatchAgent.zip
         cd /opt/src/ec2_monitor;unzip AmazonCloudWatchAgent.zip
 	cat > /opt/aws/amazon-cloudwatch-agent/doc/amazon-cloudwatch-agent-schema.json <<EOF
-'{
+{
   "agent": {
     "metrics_collection_interval": 300,
     "logfile": "/opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log"
@@ -31,7 +31,7 @@ then
       "InstanceType": "${aws:InstanceType}"
     }
   }
-}'
+}
 EOF
 
 	cd /opt/src/ec2_monitor;bash -x ./install.sh
@@ -42,7 +42,7 @@ else
 	wget https://s3.amazonaws.com/amazoncloudwatch-agent/linux/amd64/latest/AmazonCloudWatchAgent.zip -O AmazonCloudWatchAgent.zip
         cd /opt/src/ec2_monitor;unzip AmazonCloudWatchAgent.zip
         cat > /opt/aws/amazon-cloudwatch-agent/doc/amazon-cloudwatch-agent-schema.json <<EOF
-'{
+{
   "agent": {
     "metrics_collection_interval": 300,
     "logfile": "/opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log"
@@ -69,7 +69,7 @@ else
       "InstanceType": "${aws:InstanceType}"
     }
   }
-}'
+}
 EOF
 
  	cd /opt/src/ec2_monitor;bash -x ./install.sh
